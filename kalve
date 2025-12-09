@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>KALVE - Site en construction</title>
+    <style>
+        body {
+            background-color: #111;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 150px;
+        }
+        h1 { font-size: 48px; }
+        p { font-size: 20px; }
+    </style>
+</head>
+<body>
+    <h1>KALVE</h1>
+    <p>Site en construction</p>
+    <p>Mobilité d'exception • Conciergerie premium • Flotte & VIP</p>
+    <br>
+    <p>📞 +41 78 250 58 09</p>
+    <p>📧 contact@kalve.ch</p>
+</body>
+</html>
