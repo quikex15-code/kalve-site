@@ -2,42 +2,168 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KALVE – Site en construction</title>
+
+    <meta name="description" content="KALVE – Service d’abonnement automobile haut de gamme. Site en cours de construction. Contactez-nous pour toute demande.">
+
     <style>
+        /* Reset simple */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
             font-family: Arial, sans-serif;
-            background: #111;
-            color: #f5f5f5;
-            text-align: center;
-            padding-top: 80px;
+            background: #ffffff;           /* ✅ fond blanc */
+            color: #111111;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
         }
+
+        .wrapper {
+            max-width: 520px;
+            width: 100%;
+        }
+
         .card {
-            border: 1px solid #444;
-            padding: 40px;
-            width: 90%;
-            max-width: 480px;
-            margin: 0 auto;
-            background: #1a1a1a;
+            border: 1px solid #e0e0e0;
             border-radius: 10px;
+            padding: 32px 28px;
+            margin: 0 auto;
+            background: #ffffff;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.06);
         }
-        h1 { margin-bottom: 10px; }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            border: 1px solid #111111;
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .brand {
+            font-size: 18px;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+        }
+
+        main h1 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        main p {
+            font-size: 14px;
+            line-height: 1.5;
+            text-align: center;
+            margin-bottom: 18px;
+        }
+
+        .contact-block {
+            margin-top: 12px;
+            font-size: 14px;
+        }
+
+        .contact-title {
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .contact-list {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .contact-list li {
+            margin-bottom: 4px;
+        }
+
         a {
-            color: #ffcc66;
+            color: #111111;
             text-decoration: none;
         }
-        a:hover { text-decoration: underline; }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 9px 18px;
+            border-radius: 999px;
+            border: 1px solid #111111;
+            background: #111111;
+            color: #ffffff;
+            font-size: 13px;
+            text-decoration: none;
+        }
+
+        .btn-primary:hover {
+            background: #ffffff;
+            color: #111111;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 14px;
+            font-size: 11px;
+            color: #777777;
+        }
     </style>
 </head>
 <body>
-    <div class="card">
-        <h1>KALVE</h1>
-        <h2>Site en construction</h2>
-        <p>La mobilité d’exception arrive bientôt.</p>
-        <p><strong>Contact :</strong><br>
-            Nathan Lachat – Directeur Général<br>
-            Tél : <a href="tel:+41782505809">+41 78 250 58 09</a><br>
-            Email : <a href="mailto:contact@kalve.ch">contact@kalve.ch</a>
-        </p>
+    <div class="wrapper">
+        <div class="card" role="main">
+            <header>
+                <!-- Logo minimal KALVE (peut être remplacé par une vraie image) -->
+                <div class="logo" aria-hidden="true">K</div>
+                <div class="brand">KALVE</div>
+            </header>
+
+            <main>
+                <h1>Site en construction</h1>
+                <p>
+                    Notre plateforme d’abonnement automobile haut de gamme est en cours de préparation.
+                    <br>En attendant le lancement officiel, vous pouvez nous contacter directement :
+                </p>
+
+                <section class="contact-block" aria-label="Coordonnées de contact">
+                    <div class="contact-title">Contact</div>
+                    <ul class="contact-list">
+                        <li>Tél. : <a href="tel:+41782505809">+41 78 250 58 09</a></li>
+                        <li>E-mail : <a href="mailto:contact@kalve.ch">contact@kalve.ch</a></li>
+                        <li>Adresse : Route de Loëx 7, 1213 Genève, Suisse</li>
+                    </ul>
+
+                    <a class="btn-primary" href="mailto:contact@kalve.ch">
+                        Écrire à KALVE
+                    </a>
+                </section>
+            </main>
+
+            <footer>
+                © KALVE – Mobilité d’exception • Conciergerie premium • Flotte &amp; VIP
+            </footer>
+        </div>
     </div>
 </body>
 </html>
