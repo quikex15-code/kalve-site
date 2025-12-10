@@ -5,165 +5,234 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KALVE – Site en construction</title>
 
-    <meta name="description" content="KALVE – Service d’abonnement automobile haut de gamme. Site en cours de construction. Contactez-nous pour toute demande.">
-
     <style>
-        /* Reset simple */
+        /* RESET */
         *, *::before, *::after {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
 
+        /* BACKGROUND + ANIMATION "LIQUID" */
         body {
-            font-family: Arial, sans-serif;
-            background: #ffffff;           /* ✅ fond blanc */
-            color: #111111;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px;
+            padding: 32px;
+            color: #111;
+            background: #f1f1f1;
+            position: relative;
+            overflow: hidden;
         }
 
-        .wrapper {
-            max-width: 520px;
+        /* Tache de couleur animée derrière la carte */
+        .liquid-bg {
+            position: absolute;
+            width: 420px;
+            height: 420px;
+            background: radial-gradient(circle at 30% 30%, #ffffff 0, #e0e0e0 30%, #c7c7c7 60%, #a8a8a8 100%);
+            filter: blur(18px);
+            opacity: 0.9;
+            border-radius: 50%;
+            animation: floatLiquid 16s ease-in-out infinite alternate;
+        }
+
+        .liquid-bg.second {
+            width: 520px;
+            height: 520px;
+            background: radial-gradient(circle at 70% 70%, #ffffff 0, #e6e6e6 30%, #d4d4d4 60%, #b0b0b0 100%);
+            animation-duration: 22s;
+            animation-delay: -6s;
+        }
+
+        @keyframes floatLiquid {
+            0% {
+                transform: translate(-120px, -140px) scale(1);
+            }
+            50% {
+                transform: translate(40px, 40px) scale(1.05);
+            }
+            100% {
+                transform: translate(120px, -60px) scale(0.98);
+            }
+        }
+
+        /* LAYER pour que la carte soit au-dessus */
+        .layer {
+            position: relative;
+            z-index: 5;
             width: 100%;
+            max-width: 540px;
         }
 
+        /* CARD : LIQUID GLASS + GLOW + LÉGÈRE ANIMATION DE HIGHLIGHT */
         .card {
-            border: 1px solid #e0e0e0;
-            border-radius: 10px;
-            padding: 32px 28px;
-            margin: 0 auto;
-            background: #ffffff;
-            box-shadow: 0 8px 18px rgba(0,0,0,0.06);
-        }
+            padding: 40px 32px;
+            width: 100%;
+            max-width: 540px;
 
-        header {
+            background: rgba(255, 255, 255, 0.18);
+            backdrop-filter: blur(28px) saturate(160%);
+            -webkit-backdrop-filter: blur(28px) saturate(160%);
+
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.55);
+
+            box-shadow:
+                0 16px 40px rgba(0, 0, 0, 0.22),
+                inset 0 0 25px rgba(255, 255, 255, 0.12);
+
             text-align: center;
-            margin-bottom: 20px;
+
+            position: relative;
+            overflow: hidden;
         }
 
+        /* Highlight animé sur la surface du verre */
+        .card::before {
+            content: "";
+            position: absolute;
+            top: -40%;
+            left: -20%;
+            width: 140%;
+            height: 80%;
+            background: linear-gradient(
+                120deg,
+                rgba(255, 255, 255, 0.0) 0%,
+                rgba(255, 255, 255, 0.28) 45%,
+                rgba(255, 255, 255, 0.0) 100%
+            );
+            transform: translateX(-100%);
+            animation: glassLight 12s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes glassLight {
+            0% {
+                transform: translateX(-120%);
+            }
+            45% {
+                transform: translateX(20%);
+            }
+            100% {
+                transform: translateX(120%);
+            }
+        }
+
+        /* LOGO / IDENTITÉ */
         .logo {
             display: inline-flex;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 2px solid #000;
             align-items: center;
             justify-content: center;
-            width: 52px;
-            height: 52px;
-            border-radius: 50%;
-            border: 1px solid #111111;
-            font-size: 22px;
-            font-weight: 600;
+            font-weight: 700;
+            font-size: 24px;
             margin-bottom: 10px;
+            background: rgba(255, 255, 255, 0.82);
         }
 
         .brand {
-            font-size: 18px;
+            font-size: 17px;
             letter-spacing: 0.18em;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            letter-spacing: 0.06em;
             text-transform: uppercase;
         }
 
-        main h1 {
-            font-size: 22px;
-            margin-bottom: 10px;
-            text-align: center;
-        }
-
-        main p {
-            font-size: 14px;
-            line-height: 1.5;
-            text-align: center;
+        p {
+            font-size: 15px;
+            line-height: 1.6;
             margin-bottom: 18px;
+            color: #2d2d2d;
         }
 
         .contact-block {
-            margin-top: 12px;
-            font-size: 14px;
+            margin-top: 18px;
+            padding: 20px;
+            border-radius: 14px;
+
+            background: rgba(255, 255, 255, 0.35);
+            border: 1px solid rgba(255, 255, 255, 0.65);
         }
 
         .contact-title {
+            font-size: 14px;
             font-weight: 600;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
         }
 
-        .contact-list {
-            list-style: none;
-            margin-left: 0;
-        }
-
-        .contact-list li {
-            margin-bottom: 4px;
-        }
-
-        a {
-            color: #111111;
+        .contact-block a {
+            color: #000;
             text-decoration: none;
+            font-weight: 500;
         }
 
-        a:hover {
+        .contact-block a:hover {
             text-decoration: underline;
         }
 
-        .btn-primary {
-            display: inline-block;
-            margin-top: 12px;
-            padding: 9px 18px;
-            border-radius: 999px;
-            border: 1px solid #111111;
-            background: #111111;
-            color: #ffffff;
-            font-size: 13px;
-            text-decoration: none;
-        }
-
-        .btn-primary:hover {
-            background: #ffffff;
-            color: #111111;
-        }
-
         footer {
-            text-align: center;
-            margin-top: 14px;
-            font-size: 11px;
-            color: #777777;
+            margin-top: 20px;
+            font-size: 12px;
+            color: #666;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 18px;
+            }
+            .card {
+                padding: 30px 22px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="wrapper">
-        <div class="card" role="main">
-            <header>
-                <!-- Logo minimal KALVE (peut être remplacé par une vraie image) -->
-                <div class="logo" aria-hidden="true">K</div>
-                <div class="brand">KALVE</div>
-            </header>
 
-            <main>
-                <h1>Site en construction</h1>
+    <!-- Taches de lumière liquides en arrière-plan -->
+    <div class="liquid-bg"></div>
+    <div class="liquid-bg second"></div>
+
+    <div class="layer">
+        <div class="card">
+
+            <div class="logo">K</div>
+            <div class="brand">KALVE</div>
+
+            <h1>Site en construction</h1>
+            <p>
+                Notre plateforme de mobilité d’exception est en cours de développement.
+                En attendant le lancement officiel, vous pouvez déjà nous contacter pour toute demande,
+                information ou partenariat.
+            </p>
+
+            <div class="contact-block">
+                <div class="contact-title">Contact</div>
                 <p>
-                    Notre plateforme d’abonnement automobile haut de gamme est en cours de préparation.
-                    <br>En attendant le lancement officiel, vous pouvez nous contacter directement :
+                    Nathan Lachat – Directeur Général<br>
+                    Tél. : <a href="tel:+41782505809">+41 78 250 58 09</a><br>
+                    E-mail : <a href="mailto:contact@kalve.ch">contact@kalve.ch</a><br>
+                    Genève, Suisse
                 </p>
-
-                <section class="contact-block" aria-label="Coordonnées de contact">
-                    <div class="contact-title">Contact</div>
-                    <ul class="contact-list">
-                        <li>Tél. : <a href="tel:+41782505809">+41 78 250 58 09</a></li>
-                        <li>E-mail : <a href="mailto:contact@kalve.ch">contact@kalve.ch</a></li>
-                        <li>Adresse : Route de Loëx 7, 1213 Genève, Suisse</li>
-                    </ul>
-
-                    <a class="btn-primary" href="mailto:contact@kalve.ch">
-                        Écrire à KALVE
-                    </a>
-                </section>
-            </main>
+            </div>
 
             <footer>
                 © KALVE – Mobilité d’exception • Conciergerie premium • Flotte &amp; VIP
             </footer>
+
         </div>
     </div>
+
 </body>
 </html>
